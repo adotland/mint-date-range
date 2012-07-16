@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Mint Date Range</title>
+        <link charset="utf-8" href="css/main.css" media="screen" rel="stylesheet" type="text/css">
+        <link charset="utf-8" href="css/date.css" media="screen" rel="stylesheet" type="text/css">
+        <script src="js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/glDatePicker.min.js" type="text/javascript"></script>
+        <script src="js/mdr.js" type="text/javascript"></script>
+    </head>
+    <body id="MDR_body">
+        <label for="MDR_From">From</label>
+        <input type="text" id="MDR_From" name="MDR_From" class="date-box" placeholder="mm/dd/yyyy" />
+        <label for="MDR_To">To</label>
+        <input type="text" id="MDR_To" name="MDR_To" class="date-box" placeholder="mm/dd/yyyy" />
+        <br />
+        <input type="submit" value="Go" id="MDR_Submit" />
+        <br />
+        <div id="MDR_DateRangeErrorMsg" class="mdr-error">From Date must be before To Date</div>
+        <div id="MDR_PageErrorMsg" class="mdr-error">Extension only affects transaction list</div>
+        <div id="MDR_Choose">
+            <img src="images/arrow.png" />
+            <p>Choose Dates</p>
+        </div>
+        <footer id="MDR_footer">
+            <p id="MDR_Title" class="mdr-left">Mint Date Range</p>
+            <p class="mdr-right">&nbsp;<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=3PTFR63Q3C9CY&lc=US&item_name=adotland&item_number=mdr&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">Donate coffee!</a></p>
+            <p class="mdr-right">Contact via <a href="http://www.twitter.com/adotland" target="_blank">twitter</a>&nbsp;</p>
+            </footer>
+    </body>
+</html>

@@ -1,0 +1,239 @@
+#MDR_body 
+{
+    min-width       : 267px;
+    height          : 242px;
+    overflow-x      : hidden;
+    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cfecd8));
+    font-family     : "Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+}
+#MDR_body label 
+{
+    font-size       : 11px;
+    font-weight     : bold;
+
+}
+#MDR_body .date-box 
+{
+    width           : 100px;
+    text-align      : center;
+    box-shadow      : inset 1px 1px 7px rgba(0, 0, 0, 0.25);
+    border-radius   : 3px;
+    border          : 0;
+    outline         : 0;
+    margin-right    : 3px;
+    padding         : 4px 0;
+}
+#MDR_body .date-box:focus
+{
+    background      : #f5fb3e;
+}
+#MDR_body #MDR_Submit 
+{
+    height          : 47px;
+    width           : 106px;    
+    display         : block;
+    margin          : 60px auto;
+    border          : 1px solid #4D4E53;
+    border-color    : #CDDCD8 #AEC6C1;
+    color           : #fff;
+    border-radius   : 3px;
+    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6f7074), color-stop(50%,#6f7074), color-stop(50%,#4a4b4f), color-stop(75%,#5e5f63));
+    cursor          : pointer;
+    line-height     : 18px;
+    font-size       : 32px;
+    font-weight     : bold;
+}
+#MDR_body #MDR_Submit:hover
+{
+    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
+}
+.mdr-error
+{
+    color           : #bd1a00;
+    font-weight     : bold;
+    font-size       : 12px;
+}
+#MDR_footer
+{
+    color           : #789B86;
+    font-size       : 9px;
+    position        : absolute;
+    top             : 235px;
+    width           : 267px;
+}
+#MDR_Choose
+{
+    position        : absolute;
+    top             : 62px;
+    left            : 26px;
+    height          : 101px;
+    width           : 232px;
+    
+    text-align      : center;
+    box-shadow      : inset 1px 3px 17px rgba(0, 0, 0, 0.25);
+    border-radius   : 25px;
+    border          : 0;
+    outline         : 0;
+    margin-right    : 3px;
+    padding         : 4px 0;
+    background      : #f3faf5;
+}
+#MDR_Choose img
+{
+    margin: 8px;
+}
+#MDR_Choose p
+{
+    margin          : 0;
+    font-size       : 22px;
+    color           : #AAA;
+    letter-spacing  : 1px;
+    font-weight     : bold;
+    text-shadow     : 1px 1px #EFF9F2;
+}
+.mdr-left
+{
+    float           : left;
+}
+.mdr-right
+{
+    float           : right;
+}
+#MDR_body a
+{
+    color           : #005A8C;
+    cursor          : pointer;
+    text-decoration : none;
+}
+/*
+	glDatePicker default style
+
+	http://code.gautamlad.com/glDatePicker/
+	https://github.com/glad/glDatePicker/
+*/
+
+/* Calendar container div */
+.gldp-default
+{
+	float:left;
+	font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif !important;
+	background-color:#DBF0E3 !important;
+	font-size:0.7em !important;
+	border:solid 1px #EEF9F2;
+}
+
+/* Table style */
+.gldp-default table
+{
+	border-spacing:1px;
+	border-collapse:inherit;
+}
+
+/* Default row height */
+.gldp-default tr
+{
+	line-height:22px;
+}
+
+/* Default style of cell */
+.gldp-default td
+{
+	margin:0;
+	padding:0;
+	width:31px;
+	text-align:center;
+}
+
+/* Previous and Next arrows */
+.gldp-default-prevnext
+{
+	font-family:"times new roman";
+	color:#262C26;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+/* Month Year title */
+.gldp-default-monyear
+{
+	color:#262C26;
+	font-size:1.2em !important;
+	font-weight:bold;
+}
+
+/* Days of the week (Sun, Mon, ...) */
+.gldp-default-dow
+{
+	background-color:#44A671;
+	color:#eee;
+	font-size:1em !important;
+	font-weight:bold;
+}
+
+/* Selectable days */
+.gldp-default-day
+{
+	background-color:#fff;
+	color:#262C26;
+	border:solid 1px #fff;
+	font-weight:bold;
+}
+.gldp-default-day-hover
+{
+	background-color:#fff;
+	color:#E48701;
+	border:solid 1px #E48701;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+/* Selected days */
+.gldp-default-selected
+{
+	background-color:#F8DEBA;
+	color:#262C26;
+	border:solid 1px #E48701;
+}
+
+/* Today */
+.gldp-default-today
+{
+	background-color:#E48701;
+	color:#fff;
+	border:solid 1px #E48701;
+	font-weight:bold;
+}
+.gldp-default-today-hover
+{
+	background-color:#fff;
+	color:#E48701;
+	border:solid 1px #E48701;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+/* Weekends */
+.gldp-default-sat, .gldp-default-sun
+{
+	background-color:#fff;
+	color:#646E3F;
+	border:solid 1px #fff;
+	font-weight:bold;
+}
+.gldp-default-sat-hover, .gldp-default-sun-hover
+{
+	background-color:#fff;
+	color:#B8CA73;
+	border:solid 1px #E48701;
+	cursor:pointer;
+	font-weight:bold;
+}
+
+/* Non-selectable day.  Includes:previous/next month days and days that fall in the allowOld and endDate conditions */
+.gldp-default-noday
+{
+	background-color:#fff;
+	border:solid 1px #fff;
+	color:#666;
+	cursor:wait;
+}
