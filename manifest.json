@@ -1,8 +1,8 @@
 {
     "name"                      : "Mint Date Range",
-    "version"                   : "0.4.6",
+    "version"                   : "0.4.7",
     "manifest_version"          : 2,
-    "description"               : "Chose a date range for Mint's transaction list",
+    "description"               : "Choose a date range for Mint's transaction list",
     "browser_action"            : {
         "default_popup"         : "mdr.html",
         "default_icon"          : "images/mdr-icon-16.png"
@@ -10,7 +10,7 @@
     "content_scripts"           : [
         {
             "matches"           : ["https://*/*"],
-            "css"               : ["css/main.css", "css/date.css"],
+            "css"               : ["css/main.css"],
             "js"                : [
                                     "js/jquery.min.js", 
                                     "js/glDatePicker.min.js",

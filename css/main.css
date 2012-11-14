@@ -15,6 +15,7 @@
 #MDR_body .date-box 
 {
     width           : 100px;
+	height			: 16px;
     text-align      : center;
     box-shadow      : inset 1px 1px 7px rgba(0, 0, 0, 0.25);
     border-radius   : 3px;
@@ -25,7 +26,10 @@
 }
 #MDR_body .date-box:focus
 {
-    background      : #f5fb3e;
+    background      : #EEF7D4;
+	border			: 1px solid #00BF49;
+	width			: 98px;
+	height			: 14px;
 }
 #MDR_body #MDR_Submit 
 {
@@ -157,7 +161,7 @@
 .gldp-default-monyear
 {
 	color:#262C26;
-	font-size:1.2em !important;
+	font-size:1.3em !important;
 	font-weight:bold;
 }
 
@@ -216,7 +220,7 @@
 .gldp-default-sat, .gldp-default-sun
 {
 	background-color:#fff;
-	color:#646E3F;
+	color:#818D42;
 	border:solid 1px #fff;
 	font-weight:bold;
 }
@@ -234,6 +238,6 @@
 {
 	background-color:#fff;
 	border:solid 1px #fff;
-	color:#666;
-	cursor:wait;
+	color:#bbb;
+	cursor:default;
 }
