@@ -1,13 +1,19 @@
 {
     "name"                      : "Mint Date Range",
-    "version"                   : "0.4.7",
+    "version"                   : "0.4.8",
     "manifest_version"          : 2,
     "description"               : "Choose a date range for Mint's transaction list",
-    "browser_action"            : {
+    "background": {
+        "scripts"               : ["js/bg.js"],
+        "persistent"            : false
+    },
+    "page_action": {
+        "default_title"         : "Mint Date Range",
         "default_popup"         : "mdr.html",
         "default_icon"          : "images/mdr-icon-16.png"
     },
-    "content_scripts"           : [
+    "content_scripts": 
+    [
         {
             "matches"           : ["https://*/*"],
             "css"               : ["css/main.css"],
@@ -15,14 +21,17 @@
                                     "js/jquery.min.js", 
                                     "js/glDatePicker.min.js",
                                     "js/mdr.js"
-            ]
+                                  ]
         }
     ],
-    "icons"                     : {
+    "icons":
+	{
         "128"                   : "images/mdr-icon-128.png",
         "48"                    : "images/mdr-icon-48.png",
         "16"                    : "images/mdr-icon-16.png"
     },
-    "permissions"               : ["tabs"],
-    "content_security_policy"   :  "default-src 'none'; style-src 'unsafe-inline' 'self'; img-src 'self'; script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+    "permissions"               : [
+                                    "webNavigation", "tabs"
+                                  ],
+    "content_security_policy"   : "default-src 'none'; style-src 'unsafe-inline' 'self'; img-src 'self'; script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }

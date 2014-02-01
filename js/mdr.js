@@ -160,7 +160,7 @@ $(document).ready(function () {
             $("#MDR_To").data("theDate", newDate);
             $("#MDR_To").data("settings").startDate = newDate;
         }
-                
+		
     });
 
     $("#MDR_To").glDatePicker({
@@ -189,6 +189,12 @@ $(document).ready(function () {
 			if (($("#MDR_From").val() === "") && ($("#MDR_To").val() === "")) {
 			
 				$("#MDR_Submit").hide();
+			   
+			}
+			
+			if ($("#MDR_From").val() !== "") {
+			
+				$("#MDR_Submit").show();
 			   
 			}
 		
