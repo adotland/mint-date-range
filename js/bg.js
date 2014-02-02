@@ -6,7 +6,7 @@ function onWebNav(details) {
 }
 var filter = {
     url: [{
-        hostEquals: 'wwws.mint.com'
+        urlMatches: "wwws.mint.com/transaction.event"
     }]
 };
 chrome.webNavigation.onCommitted.addListener(onWebNav, filter);

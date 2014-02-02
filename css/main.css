@@ -36,7 +36,7 @@
     height          : 47px;
     width           : 106px;    
     display         : block;
-    margin          : 60px auto;
+    margin          : 60px auto 10px;
     border          : 1px solid #4D4E53;
     border-color    : #CDDCD8 #AEC6C1;
     color           : #fff;
@@ -51,8 +51,15 @@
 {
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
 }
+#MDR_body #MDR_Submit.notReady {
+    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6f7074), color-stop(50%,#6f7074), color-stop(50%,#4a4b4f), color-stop(75%,#5e5f63));
+}
+#MDR_body #MDR_Submit.ready {
+    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
+}
 .mdr-error
 {
+    margin          : 0 13px;
     color           : #bd1a00;
     font-weight     : bold;
     font-size       : 12px;
@@ -64,36 +71,6 @@
     position        : absolute;
     top             : 235px;
     width           : 267px;
-}
-#MDR_Choose
-{
-    position        : absolute;
-    top             : 62px;
-    left            : 26px;
-    height          : 101px;
-    width           : 232px;
-    
-    text-align      : center;
-    box-shadow      : inset 1px 3px 17px rgba(0, 0, 0, 0.25);
-    border-radius   : 25px;
-    border          : 0;
-    outline         : 0;
-    margin-right    : 3px;
-    padding         : 4px 0;
-    background      : #f3faf5;
-}
-#MDR_Choose img
-{
-    margin: 8px;
-}
-#MDR_Choose p
-{
-    margin          : 0;
-    font-size       : 22px;
-    color           : #AAA;
-    letter-spacing  : 1px;
-    font-weight     : bold;
-    text-shadow     : 1px 1px #EFF9F2;
 }
 .mdr-left
 {
@@ -108,6 +85,9 @@
     color           : #005A8C;
     cursor          : pointer;
     text-decoration : none;
+}
+.hidden {
+	display			: none;
 }
 /*
 	glDatePicker default style
