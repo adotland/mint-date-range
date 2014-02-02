@@ -11,7 +11,6 @@ $(document).ready(function () {
             PAGE_ERROR:         "#MDR_PageErrorMsg",
             INPUT_ERROR:        "#MDR_InputErrorMsg"
         }
-            
     }
 
     var MDR = {
@@ -222,6 +221,10 @@ $(document).ready(function () {
             runValidation(event);
         
         })
+		
+		.bind("focus", function () {
+			$(MDR_constants.selectors.MDR_SUBMIT).removeClass("notReady").addClass("notReady");
+		})
         
         .bind("keyup", function (event) {
         
