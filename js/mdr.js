@@ -23,7 +23,7 @@ $(document).ready(function () {
 			var dateStr = MDR_constants.invalidDateValue;
             
             if (date !== "") {
-            
+            //TODO: set object somewhere here for comparison on submit
                 var dateObj = new Date(date),
                     month = dateObj.getMonth(),
                     day = dateObj.getDate(),
