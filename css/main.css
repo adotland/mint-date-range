@@ -5,16 +5,17 @@
     overflow-x      : hidden;
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cfecd8));
     font-family     : "Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+    font-size       : 14px;
 }
 #MDR_body label 
 {
-    font-size       : 11px;
+    font-size       : 0.8em;
     font-weight     : bold;
 
 }
 #MDR_body .date-box 
 {
-    width           : 100px;
+    width           : 92px;
 	height			: 16px;
     text-align      : center;
     box-shadow      : inset 1px 1px 7px rgba(0, 0, 0, 0.25);
@@ -22,14 +23,19 @@
     border          : 0;
     outline         : 0;
     margin-right    : 3px;
+    margin-left     : 3px;
     padding         : 4px 0;
 }
 #MDR_body .date-box:focus
 {
     background      : #EEF7D4;
 	border			: 1px solid #00BF49;
-	width			: 98px;
+	width			: 90px;
 	height			: 14px;
+}
+#MDR_From:focus
+{
+    margin-right    : 7px !important;
 }
 #MDR_body #MDR_Submit 
 {
@@ -43,18 +49,19 @@
     border-radius   : 3px;
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6f7074), color-stop(50%,#6f7074), color-stop(50%,#4a4b4f), color-stop(75%,#5e5f63));
     cursor          : pointer;
-    line-height     : 18px;
-    font-size       : 32px;
+    line-height     : 1em;
+    font-size       : 2.7em;
     font-weight     : bold;
 }
 #MDR_body #MDR_Submit:hover
 {
-    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
-}
-#MDR_body #MDR_Submit.notReady {
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6f7074), color-stop(50%,#6f7074), color-stop(50%,#4a4b4f), color-stop(75%,#5e5f63));
 }
 #MDR_body #MDR_Submit.ready {
+    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
+}
+#MDR_body #MDR_Submit.ready:hover
+{
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
 }
 .mdr-error
@@ -62,14 +69,14 @@
     margin          : 0 13px;
     color           : #bd1a00;
     font-weight     : bold;
-    font-size       : 12px;
+    font-size       : 0.85em;
 }
 #MDR_footer
 {
     color           : #789B86;
-    font-size       : 9px;
+    font-size       : 0.7em;
     position        : absolute;
-    top             : 235px;
+    top             : 233px;
     width           : 267px;
 }
 .mdr-left
@@ -86,7 +93,7 @@
     cursor          : pointer;
     text-decoration : none;
 }
-.hidden {
+.mdr-hidden {
 	display			: none;
 }
 /*
@@ -102,7 +109,7 @@
 	float:left;
 	font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif !important;
 	background-color:#DBF0E3 !important;
-	font-size:0.7em !important;
+	font-size:0.9em !important;
 	border:solid 1px #EEF9F2;
 }
 

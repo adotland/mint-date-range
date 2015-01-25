@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var MDR_constants = {
         selectors: {
-            ERROR_MSGS :        ".mde-error",
+            ERROR_MSGS :        ".mdr-error",
             MDR_FROM:           "#MDR_From",
             MDR_TO:             "#MDR_To",
             MDR_FROM_CAL:       "#MDR_From-gldp",
@@ -10,15 +10,17 @@ $(document).ready(function () {
             DATE_RANGE_ERROR:   "#MDR_DateRangeErrorMsg",
             PAGE_ERROR:         "#MDR_PageErrorMsg",
             INPUT_ERROR:        "#MDR_InputErrorMsg"
-        }
-    }
+        },
+        
+        invalidDateValue: "invalidDate"
+    };
 
     var MDR = {
     
         tabURL: "",
 		
 		valiDATE: function (date) {
-			var dateStr = "";
+			var dateStr = MDR_constants.invalidDateValue;
             
             if (date !== "") {
             
@@ -28,13 +30,55 @@ $(document).ready(function () {
                     year = dateObj.getFullYear();
                     
                 if (!isNaN(year) && year < 9999) {
+                    
                     dateStr = (month + 1) + "/" + day + "/" + year;
+                    
                 }
                 
+            } else {
+            
+                return "";
+            
             }
             
 			return dateStr;
 		},
+        
+        runValidation: function () {
+        
+            $(MDR_constants.selectors.MDR_TO + "," + MDR_constants.selectors.MDR_FROM).each(function () {
+                var date = $(this).val(),
+                    validatedDate = MDR.valiDATE(date);
+
+                if (validatedDate === MDR_constants.invalidDateValue || (validatedDate === "" && $(this).attr("id") !== "MDR_To")) {
+
+                    $(MDR_constants.selectors.MDR_SUBMIT).removeClass("ready");
+                    $(MDR_constants.selectors.INPUT_ERROR).show();
+                    return false;
+
+                } else {
+
+                    $(MDR_constants.selectors.MDR_SUBMIT).addClass("ready");
+                    $(MDR_constants.selectors.INPUT_ERROR).hide();
+
+                }
+            });
+        },
+        
+        handleSubmit: function(event) {
+                    
+            if ($(MDR_constants.selectors.MDR_SUBMIT).hasClass("ready")) {
+
+                return MDR.doSubmit();
+
+            } else {
+                
+                event.preventDefault();
+                return false;
+
+            }
+            
+        },
         
         doSubmit: function () {
             
@@ -58,7 +102,7 @@ $(document).ready(function () {
                         
                     }
                     
-                    if ((toDate !== "") || (fromDate !== "")) {
+                    if ((toDate !== MDR_constants.invalidDateValue) || (fromDate !== MDR_constants.invalidDateValue)) {
                     
                         if (MDR.tabURL.indexOf("endDate") > -1) {
                         
@@ -93,13 +137,13 @@ $(document).ready(function () {
                             
                             } else {
                             
-                                MDR.tabURL += "?endDate=" + toDate;                            
-                            
+                                MDR.tabURL += "?endDate=" + toDate;
+                                
                             }
 
                             if (MDR.tabURL.indexOf("dateEnd") > -1) {
                             
-                                dateArray = toDate.split("/");                       
+                                dateArray = toDate.split("/");
                                 MDR.tabURL = MDR.tabURL.replace(/%22dateEnd%22%3A%22\d{1,2}%2F\d{1,2}%2F\d{4}/, "%22dateEnd%22%3A%22" + dateArray[0] + "%2F" + dateArray[1] + "%2F" + dateArray[2]);
 
                             } else if (MDR.tabURL.indexOf("#location:%7B") > -1) {
@@ -116,10 +160,10 @@ $(document).ready(function () {
                         
                         if (fromDate !== "") {
                         
-                            if (MDR.tabURL === "") { 
-                            
-                                MDR.tabURL = tab.url; 
+                            if (MDR.tabURL === "") {
                                 
+                                MDR.tabURL = tab.url;
+                            
                             }
                             
                             dateArray = [];
@@ -136,13 +180,13 @@ $(document).ready(function () {
                             
                             } else {
                             
-                                MDR.tabURL += "?startDate=" + fromDate;                            
+                                MDR.tabURL += "?startDate=" + fromDate;
                             
                             }
                             
                             if (MDR.tabURL.indexOf("dateStart") > -1) {
                             
-                                dateArray = fromDate.split("/");                       
+                                dateArray = fromDate.split("/");
                                 MDR.tabURL = MDR.tabURL.replace(/%22dateStart%22%3A%22\d{1,2}%2F\d{1,2}%2F\d{4}/, "%22dateStart%22%3A%22" + dateArray[0] + "%2F" + dateArray[1] + "%2F" + dateArray[2]);
 
                             } else if (MDR.tabURL.indexOf("#location:%7B") > -1) {
@@ -184,19 +228,19 @@ $(document).ready(function () {
                
             });
 
-        } 
-            
+        }
+    
     };
 
     // Event binding
     $(MDR_constants.selectors.MDR_FROM).glDatePicker({
                         
-        onChange : function (target, newDate) {
+        onChange : function ($target, newDate) {
                         
             $(MDR_constants.selectors.MDR_SUBMIT).show();
             $(MDR_constants.selectors.MDR_TO).data("theDate", newDate);
             $(MDR_constants.selectors.MDR_TO).data("settings").startDate = newDate;
-            $(MDR_constants.selectors.MDR_SUBMIT).removeClass("ready").addClass("ready");
+            MDR.runValidation($target);
         }
         
     });
@@ -204,53 +248,45 @@ $(document).ready(function () {
     $(MDR_constants.selectors.MDR_TO).glDatePicker({
                     
         allowOld    : false,
-        onChange    : function (target, newDate) {
+        onChange    : function ($target, newDate) {
             
             $(MDR_constants.selectors.MDR_SUBMIT).show();
-            $(MDR_constants.selectors.MDR_SUBMIT).removeClass("ready").addClass("ready");
+            MDR.runValidation($target);
             
         }
         
     });
 
-    $(MDR_constants.selectors.MDR_SUBMIT).click(function () { return MDR.doSubmit(); });
+    $(MDR_constants.selectors.MDR_SUBMIT).click(function (event) {
+        
+        MDR.handleSubmit(event);
+        
+    });
 
     $(MDR_constants.selectors.MDR_FROM + "," + MDR_constants.selectors.MDR_TO)
-        .bind("blur", function (event) { 
+        .bind("blur", function (event) {
         
-            runValidation(event);
+            var $target = $(event.target);
+            MDR.runValidation($target);
         
         })
-		
-		.bind("focus", function () {
-			$(MDR_constants.selectors.MDR_SUBMIT).removeClass("notReady").addClass("notReady");
-		})
         
         .bind("keyup", function (event) {
-        
+
             if (event.keyCode === 13) {
-            
+
                 $(MDR_constants.selectors.MDR_FROM_CAL + "," + MDR_constants.selectors.MDR_TO_CAL).hide();
-                MDR.doSubmit();
-                
-            } else {
-                runValidation(event);
+                MDR.handleSubmit(event);
+ 
             }
+
+        })
+
+        .bind("focus", function (event) {
+        
+            $(MDR_constants.selectors.INPUT_ERROR).hide();
         
         });
-
-    var runValidation = function (event) {
-        var date = $(event.target).val();
-        if (MDR.valiDATE(date) === "") {
-            
-            $(MDR_constants.selectors.MDR_SUBMIT).removeClass("notReady").addClass("notReady");
-        
-        } else {
-    
-            $(MDR_constants.selectors.MDR_SUBMIT).removeClass("ready").addClass("ready");
-    
-        }
-    }
 
 	// Init
     $(MDR_constants.selectors.MDR_FROM).focus();
