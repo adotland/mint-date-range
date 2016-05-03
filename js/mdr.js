@@ -140,7 +140,6 @@ $(document).ready(function () {
         updateTabUrl: function (startNotEnd, dateStr) {
 
             var dateArray = [],
-                locStr = null,
                 locStartStr = "#location:%7B",
                 locStart = MDR.tabURL.indexOf(locStartStr),
                 locDateStr = null,
@@ -266,7 +265,7 @@ $(document).ready(function () {
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-5555595-9']);
     _gaq.push(['_trackPageview']);
-    (function() {
+    (function () {
       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
       ga.src = 'https://ssl.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
