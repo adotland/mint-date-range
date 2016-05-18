@@ -175,6 +175,12 @@ $(document).ready(function () {
                     MDR.tabURL = MDR.tabURL.slice(0, locStart + 13) + locDateStr + "%2C" + MDR.tabURL.slice(locStart + 13);
 
                 } else {
+                    
+                    if (MDR.tabURL.slice(-1) === "#") {
+                        
+                        MDR.tabURL = MDR.tabURL.slice(0,-1);
+                        
+                    }
 
                     MDR.tabURL += locStartStr + locDateStr + "%2C%22query%22%3A%22%22%2C%22offset%22%3A0%2C%22typeFilter%22%3A%22cash%22%7D";
 
