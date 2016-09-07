@@ -87,7 +87,22 @@ $(document).ready(function () {
                 $(MDR_constants.selectors.ERROR_MSGS).hide();
                 MDR.tabURL = tab.url;
 
-                if (MDR.tabURL.match(/https\:\/\/wwws\.mint\.com\/(\w+)\.event/) !== null) {
+                var mintUrls = [/https\:\/\/wwws\.mint\.com\/(\w+)\.event/, /https\:\/\/mint\.intuit\.com\/(\w+)\.event/],
+                    validUrl,
+                    matchUrlArr,
+                    transactionPageMatch;
+                
+                for (var index = 0; index < mintUrls.length; index++) {
+                    matchUrlArr = MDR.tabURL.match(mintUrls[index]);
+                    if (matchUrlArr !== null) {
+                        validUrl = true;
+                        if (matchUrlArr.length > 1) {
+                            transactionPageMatch = (matchUrlArr[1] === "transaction" ? true : false);
+                        }
+                    }
+                }
+
+                if (validUrl) {
 
                     var fromDate    = MDR.valiDATE($(MDR_constants.selectors.MDR_FROM).val()),
                         toDate      = MDR.valiDATE($(MDR_constants.selectors.MDR_TO).val()),
@@ -108,7 +123,7 @@ $(document).ready(function () {
 
                         if (MDR.tabURL !== "") {
 
-                            if (MDR.tabURL.match(/https\:\/\/wwws\.mint\.com\/(\w+)\.event/)[1] === "transaction") {
+                            if (transactionPageMatch) {
 
                                 chrome.tabs.update(tab.id, {url: MDR.tabURL});
                                 window.close();
