@@ -1,7 +1,7 @@
 {
     "name"                      : "Mint Date Range",
     "short_name"                : "MintDateRange",
-    "version"                   : "1.3.3",
+    "version"                   : "1.4.0",
     "manifest_version"          : 2,
     "description"               : "Choose a date range for Mint's transaction list",
     "background": {
@@ -32,7 +32,7 @@
         "16"                    : "images/mdr-icon-16.png"
     },
     "permissions"               : [
-                                    "declarativeContent", "activeTab"
+                                    "declarativeContent", "activeTab", "storage"
                                   ],
     "content_security_policy"   : "default-src 'none'; style-src 'unsafe-inline' 'self'; img-src 'self'; script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }

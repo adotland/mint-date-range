@@ -11,33 +11,64 @@
 {
     font-size       : 0.8em;
     font-weight     : bold;
+    margin-right    : 2px;
+    line-height     : 22px;
 
 }
-#MDR_body .date-box 
+#MDR_inputContainer {
+    display: flex;
+}
+.mdr-date-box-container {
+    display: inline-block;
+}
+.mdr-date-box 
 {
-    width           : 92px;
+    width           : 82px;
 	height			: 16px;
-    text-align      : center;
     box-shadow      : inset 1px 1px 7px rgba(0, 0, 0, 0.25);
     border-radius   : 3px;
     border          : 0;
     outline         : 0;
     margin-right    : 3px;
     margin-left     : 3px;
-    padding         : 4px 0;
+    padding         : 4px 0 4px 10px;
 }
-#MDR_body .date-box:focus
+#MDR_From.mdr-date-box
+{
+    margin-right    : 11px;
+}
+.mdr-date-box:focus, .mdr-date-box-focus
 {
     background      : #EEF7D4;
 	border			: 1px solid #00BF49;
-	width			: 90px;
+	width			: 80px;
 	height			: 14px;
 }
-#MDR_From:focus
-{
-    margin-right    : 7px !important;
+.mdr-date-box.mdr-invalid-input {
+    border          : 1px solid red;
 }
-#MDR_body #MDR_Submit 
+.mdr-reset-button {
+    position        : absolute;
+    top             : 7px;
+    left            : 112px;
+    border          : none;
+    font-size       : 15px;
+    font-weight     : 800;
+    background      : transparent;
+    opacity         : 0.3;
+    display         : none;
+}
+#MDR_To+.mdr-reset-button, #MDR_To-gldp+.mdr-reset-button {
+    left            : 234px;
+}
+.mdr-reset-button:hover {
+    opacity         : 0.9;
+}
+.mdr-reset-button:focus {
+    outline: none;
+}
+    
+#MDR_Submit 
 {
     height          : 47px;
     width           : 106px;    
@@ -53,16 +84,17 @@
     font-size       : 2.7em;
     font-weight     : bold;
 }
-#MDR_body #MDR_Submit:hover
+#MDR_Submit:hover
 {
-    background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6f7074), color-stop(50%,#6f7074), color-stop(50%,#4a4b4f), color-stop(75%,#5e5f63));
+    cursor          : default;
 }
-#MDR_body #MDR_Submit.ready {
+#MDR_Submit.mdr-ready {
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
 }
-#MDR_body #MDR_Submit.ready:hover
+#MDR_Submit.mdr-ready:hover
 {
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
+    cursor          : pointer;
 }
 .mdr-error
 {

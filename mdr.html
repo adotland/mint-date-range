@@ -8,10 +8,18 @@
         <script src="js/mdr.js" type="text/javascript"></script>
     </head>
     <body id="MDR_body">
-        <label for="MDR_From">From</label>
-        <input type="text" id="MDR_From" name="MDR_From" class="date-box" placeholder="mm/dd/yyyy" />
-        <label for="MDR_To">To</label>
-        <input type="text" id="MDR_To" name="MDR_To" class="date-box" placeholder="mm/dd/yyyy" alt="this field can be blank"/>
+        <div id="MDR_inputContainer">
+            <label for="MDR_From">From</label>
+            <span class="mdr-date-box-container">
+                <input type="text" id="MDR_From" name="MDR_From" class="mdr-date-box" placeholder="mm/dd/yyyy" />
+                <button class="mdr-reset-button">&times;</button>
+            </span>
+            <label for="MDR_To">To</label>
+            <span class="mdr-date-box-container">
+                <input type="text" id="MDR_To" name="MDR_To" class="mdr-date-box" placeholder="mm/dd/yyyy" alt="this field can be blank"/>
+                <button class="mdr-reset-button">&times;</button>
+            </span>
+        </div>
         <br />
         <input type="submit" value="Go" id="MDR_Submit" />
         <br />
