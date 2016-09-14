@@ -16,10 +16,10 @@
 
 }
 #MDR_inputContainer {
-    display: flex;
+    display         : flex;
 }
 .mdr-date-box-container {
-    display: inline-block;
+    display         : inline-block;
 }
 .mdr-date-box 
 {
@@ -63,9 +63,10 @@
 }
 .mdr-reset-button:hover {
     opacity         : 0.9;
+    cursor          : pointer;
 }
 .mdr-reset-button:focus {
-    outline: none;
+    outline         : none;
 }
     
 #MDR_Submit 
