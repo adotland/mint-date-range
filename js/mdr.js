@@ -104,7 +104,7 @@ $(document).ready(function () {
                 MDR_cached.$InputError.hide();
                 if (! MDR_cached.$FromInput.hasClass(MDR_constants.selectorNames.INVALID_INPUT) &&
                     ! MDR_cached.$ToInput.hasClass(MDR_constants.selectorNames.INVALID_INPUT))
-                    MDR_cached.$SubmitButton.addClass(MDR_constants.selectorNames.SUBMIT_READY)
+                    MDR_cached.$SubmitButton.addClass(MDR_constants.selectorNames.SUBMIT_READY);
             } else {
                 MDR_cached.$InputError.show();
                 MDR_cached.$SubmitButton.removeClass(MDR_constants.selectorNames.SUBMIT_READY);  
@@ -344,7 +344,7 @@ $(document).ready(function () {
             startDate = selectedDate;
             MDR_cached.$FromInput.val(selectedDate);
             MDR_cached.$FromInput.data("theDate", new Date(selectedDate));
-            MDR_cached.$FromInput.next().show() // show reset button            
+            MDR_cached.$FromInput.next().show(); // show reset button            
         }
 
         fromDatePicker = MDR_cached.$FromInput.glDatePicker({
@@ -378,7 +378,7 @@ $(document).ready(function () {
             startDate = selectedDate;
             MDR_cached.$ToInput.val(selectedDate);
             MDR_cached.$ToInput.data("theDate", new Date(selectedDate));
-            MDR_cached.$ToInput.next().show() // show reset button
+            MDR_cached.$ToInput.next().show(); // show reset button
         }
 
         toDatePicker = MDR_cached.$ToInput.glDatePicker({
@@ -413,7 +413,7 @@ $(document).ready(function () {
 
         .change( function (event) {
 
-            var $target = $(event.target)
+            var $target = $(event.target);
             if (! $target.hasClass(MDR_constants.selectorNames.GLDP)) {
                 MDR.validateAndStore($target, true);
                 MDR.validateAndStore($target, false);
@@ -451,13 +451,13 @@ $(document).ready(function () {
             MDR.resetDate(true);
             fromDatePicker.glDatePicker("setStartDate", today);
             fromDatePicker.glDatePicker("setSelectedDate", -1);
-            MDR_cached.$FromInput.data("theDate", new Date());
+            MDR_cached.$FromInput.data("theDate", today);
             fromDatePicker.glDatePicker("update");
         } else {
             MDR.resetDate(false);
             toDatePicker.glDatePicker("setStartDate", today);
             toDatePicker.glDatePicker("setSelectedDate", -1);
-            MDR_cached.$ToInput.data("theDate", new Date());
+            MDR_cached.$ToInput.data("theDate", today);
             toDatePicker.glDatePicker("update");
         }
     });
