@@ -1,12 +1,11 @@
 {
     "name"                      : "Mint Date Range",
     "short_name"                : "MintDateRange",
-    "version"                   : "1.4.1",
+    "version"                   : "1.4.2",
     "manifest_version"          : 2,
     "description"               : "Choose a date range for Mint's transaction list",
     "background": {
-        "scripts"               : ["js/bg.js"],
-        "persistent"            : false
+        "scripts"               : ["js/bg.js"]
     },
     "page_action": {
         "default_title"         : "Mint Date Range",
@@ -16,7 +15,8 @@
     "content_scripts": 
     [
         {
-            "matches"           : ["https://*.mint.com/*,https://mint.intuit.com/*"],
+            "matches"           : ["https://wwws.mint.com/transaction.event",
+                                   "https://mint.intuit.com/transaction.event"],
             "css"               : ["css/main.css"],
             "js"                : [
                                     "js/jquery.min.js", 
@@ -32,7 +32,9 @@
         "16"                    : "images/mdr-icon-16.png"
     },
     "permissions"               : [
-                                    "declarativeContent", "activeTab", "storage"
+                                    "declarativeContent",
+                                    "activeTab",
+                                    "storage"
                                   ],
     "content_security_policy"   : "default-src 'none'; style-src 'unsafe-inline' 'self'; img-src 'self'; script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }
