@@ -449,14 +449,12 @@ $(document).ready(function () {
         if (input.id === "MDR_From") {
             MDR_cached.$SubmitButton.removeClass(MDR_constants.selectorNames.SUBMIT_READY);
             MDR.resetDate(true);
-            fromDatePicker.glDatePicker("setStartDate", today);
-            fromDatePicker.glDatePicker("setSelectedDate", -1);
+            fromDatePicker.glDatePicker();
             MDR_cached.$FromInput.data("theDate", today);
             fromDatePicker.glDatePicker("update");
         } else {
             MDR.resetDate(false);
-            toDatePicker.glDatePicker("setStartDate", today);
-            toDatePicker.glDatePicker("setSelectedDate", -1);
+            toDatePicker.glDatePicker();
             MDR_cached.$ToInput.data("theDate", today);
             toDatePicker.glDatePicker("update");
         }

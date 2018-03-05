@@ -202,7 +202,7 @@
 	border:solid 1px #fff;
 	font-weight:bold;
 }
-.gldp-default-day-hover
+.gldp-default-day-hover, .past-hover, .future-hover
 {
 	background-color:#fff;
 	color:#E48701;
@@ -254,7 +254,7 @@
 }
 
 /* Non-selectable day.  Includes:previous/next month days and days that fall in the allowOld and endDate conditions */
-.gldp-default-noday
+.gldp-default-noday, .gldp-default-day .past, .gldp-default-day .future
 {
 	background-color:#fff;
 	border:solid 1px #fff;
