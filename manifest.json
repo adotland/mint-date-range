@@ -1,7 +1,7 @@
 {
     "name"                      : "Mint Date Range",
     "short_name"                : "MintDateRange",
-    "version"                   : "1.4.3",
+    "version"                   : "1.4.4",
     "manifest_version"          : 2,
     "description"               : "Choose a date range for Mint's transaction list",
     "background": {
@@ -15,11 +15,13 @@
     "content_scripts": 
     [
         {
-            "matches"           : ["https://wwws.mint.com/transaction.event",
-                                   "https://mint.intuit.com/transaction.event"],
+            "matches"           : [
+                                    "https://wwws.mint.com/transaction.event",
+                                    "https://mint.intuit.com/transaction.event"
+                                  ],
             "css"               : ["css/main.css"],
             "js"                : [
-                                    "js/jquery.min.js", 
+                                    "js/jquery.min.js",
                                     "js/glDatePicker.min.js",
                                     "js/mdr.js"
                                   ]
