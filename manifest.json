@@ -23,7 +23,8 @@
             "js"                : [
                                     "js/jquery.min.js",
                                     "js/glDatePicker.min.js",
-                                    "js/mdr.js"
+                                    "js/mdr.js",
+                                    "js/mdr-ga.js"
                                   ]
         }
     ],

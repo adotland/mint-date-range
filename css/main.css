@@ -122,13 +122,28 @@
 }
 #MDR_body a
 {
-    color           : #005A8C;
+    color           : inherit;
     cursor          : pointer;
     text-decoration : none;
+    transition      : 0.3s;
 }
 .mdr-hidden {
 	display			: none;
 }
+#MDR_dcb {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#MDR_dcb:hover, #MDR_body a:hover {
+    color: #005A8C;
+}
+
 /*
 	glDatePicker default style
 

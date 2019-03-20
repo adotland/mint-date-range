@@ -11,7 +11,8 @@ $(document).ready(function () {
             PAGE_ERROR:         "#MDR_PageErrorMsg",
             INPUT_ERROR:        "#MDR_InputErrorMsg",
             RESET_DATE:         ".mdr-reset-button",
-            INPUT_CONTAINER:    ".mdr-date-box-container"
+            INPUT_CONTAINER:    ".mdr-date-box-container",
+            DCB:                "#MDR_dcb"
         },
 
         selectorNames: {
@@ -34,7 +35,8 @@ $(document).ready(function () {
         $ErrorMsgs:         $(MDR_constants.selectors.ERROR_MSGS),
         $InputError:        $(MDR_constants.selectors.INPUT_ERROR),
         $ResetDate:         $(MDR_constants.selectors.RESET_DATE),
-        $InputContainers:   $(MDR_constants.selectors.INPUT_CONTAINER)
+        $InputContainers:   $(MDR_constants.selectors.INPUT_CONTAINER),
+        $DCB:               $(MDR_constants.selectors.DCB)
 
     };
 
@@ -460,16 +462,14 @@ $(document).ready(function () {
         }
     });
 
+    MDR_cached.$DCB.click(function(e) {
+        _gaq.push(['_trackEvent', e.target.id, 'possible']);
+        chrome.tabs.getSelected(null, function (tab) {
+            chrome.tabs.create({url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D9L8GRX9H58TN&source=url', index: tab.index + 1});
+        });
+    });
+
 	// Init
     MDR_cached.$FromInput.focus();
-
-    // GA
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-5555595-9']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = 'https://ssl.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-});
+    
+ });
