@@ -1,7 +1,7 @@
 #MDR_body 
 {
     min-width       : 267px;
-    height          : 242px;
+    height          : 251px;
     overflow-x      : hidden;
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#cfecd8));
     font-family     : "Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
@@ -109,7 +109,7 @@
     color           : #789B86;
     font-size       : 0.7em;
     position        : absolute;
-    top             : 233px;
+    top             : 238px;
     width           : 267px;
 }
 .mdr-left
