@@ -8,6 +8,12 @@ chrome.runtime.onInstalled.addListener(function () {
                     }),
                     new chrome.declarativeContent.PageStateMatcher({
                         pageUrl: { urlPrefix: "https://mint.intuit.com/transaction.event" }
+                    }),
+                    new chrome.declarativeContent.PageStateMatcher({
+                        css: ['a[href$="transaction.event"].selected']
+                    }),
+                    new chrome.declarativeContent.PageStateMatcher({
+                        css: [".TransactionPageView"]
                     })
                 ],
                 actions: [ new chrome.declarativeContent.ShowPageAction() ]
