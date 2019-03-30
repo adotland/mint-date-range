@@ -212,7 +212,7 @@ $(document).ready(function () {
 
             if (queryStart > -1 && locStart === -1) {
 
-                this.updateUrlQuery(startNotEnd, dateStr, queryStart);
+                this.updateUrlQuery(startNotEnd, dateStr);
 
             } else {
 
@@ -222,7 +222,7 @@ $(document).ready(function () {
 
         },
 
-        updateUrlQuery: function (startNotEnd, dateStr, queryStart) {
+        updateUrlQuery: function (startNotEnd, dateStr) {
 
             var queryDateStr = null,
                 queryDateToken = startNotEnd ? "startDate" : "endDate";
