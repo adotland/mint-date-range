@@ -1,7 +1,7 @@
 {
     "name"                      : "Mint Date Range",
     "short_name"                : "MintDateRange",
-    "version"                   : "1.4.9",
+    "version"                   : "1.5.0",
     "manifest_version"          : 2,
     "description"               : "Choose a date range for Mint's transaction list",
     "background": {

@@ -134,69 +134,74 @@ $(document).ready(function () {
 
         doSubmit: function () {
 
-            chrome.tabs.getSelected(null, function (tab) {
+            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
 
-                MDR_cached.$ErrorMsgs.hide();
-                MDR.tabURL = tab.url;
+                if (tabs.length) {
+                    var tab = tabs[0];
 
-                var mintUrls = MDR_constants.MINT_URLS,
-                    validUrl,
-                    matchUrlArr,
-                    transactionPageMatch;
-                
-                for (var index = 0; index < mintUrls.length; index++) {
-                    matchUrlArr = MDR.tabURL.match(mintUrls[index]);
-                    if (matchUrlArr !== null) {
-                        validUrl = true;
-                        if (matchUrlArr.length > 1) {
-                            transactionPageMatch = (matchUrlArr[1] === "transaction" ? true : false);
+                    MDR_cached.$ErrorMsgs.hide();
+                    MDR.tabURL = tab.url;
+
+                    var mintUrls = MDR_constants.MINT_URLS,
+                        validUrl,
+                        matchUrlArr,
+                        transactionPageMatch;
+                    
+                    for (var index = 0; index < mintUrls.length; index++) {
+                        matchUrlArr = MDR.tabURL.match(mintUrls[index]);
+                        if (matchUrlArr !== null) {
+                            validUrl = true;
+                            if (matchUrlArr.length > 1) {
+                                transactionPageMatch = (matchUrlArr[1] === "transaction" ? true : false);
+                            }
                         }
                     }
-                }
 
-                if (validUrl) {
+                    if (validUrl) {
 
-                    var fromDate    = MDR.valiDATE(MDR_cached.$FromInput.val()),
-                        toDate      = MDR.valiDATE(MDR_cached.$ToInput.val()),
-                        fromDateObj = MDR_cached.$FromInput.data("theDate"),
-                        toDateObj   = MDR_cached.$ToInput.data("theDate");
+                        var fromDate    = MDR.valiDATE(MDR_cached.$FromInput.val()),
+                            toDate      = MDR.valiDATE(MDR_cached.$ToInput.val()),
+                            fromDateObj = MDR_cached.$FromInput.data("theDate"),
+                            toDateObj   = MDR_cached.$ToInput.data("theDate");
 
-                    if (fromDateObj > toDateObj) {
+                        if (fromDateObj > toDateObj) {
 
-                        $(MDR_constants.selectors.DATE_RANGE_ERROR).show();
-                        return false;
+                            $(MDR_constants.selectors.DATE_RANGE_ERROR).show();
+                            return false;
 
-                    }
+                        }
 
-                    if ((toDate !== MDR_constants.INVALID_DATE_VALUE) || (fromDate !== MDR_constants.INVALID_DATE_VALUE)) {
+                        if ((toDate !== MDR_constants.INVALID_DATE_VALUE) || (fromDate !== MDR_constants.INVALID_DATE_VALUE)) {
 
-                        MDR.updateTabUrl(false, toDate);
-                        MDR.updateTabUrl(true, fromDate);
+                            MDR.updateTabUrl(false, toDate);
+                            MDR.updateTabUrl(true, fromDate);
 
-                        if (MDR.tabURL !== "") {
+                            if (MDR.tabURL !== "") {
 
-                            if (transactionPageMatch) {
+                                if (transactionPageMatch) {
 
-                                chrome.tabs.update(tab.id, {url: MDR.tabURL});
-                                window.close();
+                                    chrome.tabs.update(tab.id, {url: MDR.tabURL});
+                                    window.close();
 
-                            } else {
+                                } else {
 
-                                MDR_cached.$PageError.show();
+                                    MDR_cached.$PageError.show();
+
+                                }
 
                             }
+
+                        } else {
+
+                            MDR_cached.$InputError.show();
 
                         }
 
                     } else {
 
-                        MDR_cached.$InputError.show();
+                        MDR_cached.$PageError.show();
 
                     }
-
-                } else {
-
-                    MDR_cached.$PageError.show();
 
                 }
 
@@ -465,8 +470,10 @@ $(document).ready(function () {
 
     MDR_cached.$DCB.click(function(e) {
         _gaq.push(['_trackEvent', e.target.id, 'possible']);
-        chrome.tabs.getSelected(null, function (tab) {
-            chrome.tabs.create({url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D9L8GRX9H58TN&source=url', index: tab.index + 1});
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            if (tabs.length) {
+                chrome.tabs.create({url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D9L8GRX9H58TN&source=url', index: tabs[0].index + 1});
+            }
         });
     });
 
