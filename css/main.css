@@ -97,12 +97,20 @@
     background      : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#208f57), color-stop(50%,#208f57), color-stop(50%,#006e2f), color-stop(75%,#028447));
     cursor          : pointer;
 }
-.mdr-error
+#MDR_body a
+{
+    color           : inherit;
+    cursor          : pointer;
+    text-decoration : none;
+    transition      : 0.3s;
+}
+#MDR_body .mdr-error
 {
     margin          : 0 13px;
     color           : #bd1a00;
     font-weight     : bold;
     font-size       : 0.85em;
+    line-height     : 1.5em;
 }
 #MDR_footer
 {
@@ -120,17 +128,11 @@
 {
     float           : right;
 }
-#MDR_body a
-{
-    color           : inherit;
-    cursor          : pointer;
-    text-decoration : none;
-    transition      : 0.3s;
-}
+
 .mdr-hidden {
 	display			: none;
 }
-#MDR_dcb {
+#MDR_dcb, #MDR_TransactionsLink {
     font-size: 100%;
     font-family: inherit;
     border: 0;
@@ -140,10 +142,19 @@
     cursor: pointer;
     transition: 0.3s;
 }
-#MDR_dcb:hover, #MDR_body a:hover {
+#MDR_dcb:hover, #MDR_footer a:hover {
     color: #005A8C;
 }
-
+#MDR_TransactionsLink
+{
+    color           : #333;
+}
+#MDR_TransactionsLink:hover
+{
+    color           : #999;
+    border-bottom   : 1px solid #999;
+}
+#MDR_TransactionsLink:focus {outline:0;}
 /*
 	glDatePicker default style
 

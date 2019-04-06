@@ -12,7 +12,8 @@ $(document).ready(function () {
             INPUT_ERROR:        "#MDR_InputErrorMsg",
             RESET_DATE:         ".mdr-reset-button",
             INPUT_CONTAINER:    ".mdr-date-box-container",
-            DCB:                "#MDR_dcb"
+            DCB:                "#MDR_dcb",
+            TRANSACTIONS_LINK:  "#MDR_TransactionsLink"
         },
 
         selectorNames: {
@@ -36,8 +37,8 @@ $(document).ready(function () {
         $InputError:        $(MDR_constants.selectors.INPUT_ERROR),
         $ResetDate:         $(MDR_constants.selectors.RESET_DATE),
         $InputContainers:   $(MDR_constants.selectors.INPUT_CONTAINER),
-        $DCB:               $(MDR_constants.selectors.DCB)
-
+        $DCB:               $(MDR_constants.selectors.DCB),
+        $PageError:         $(MDR_constants.selectors.PAGE_ERROR)
     };
 
     var MDR = {
@@ -181,7 +182,7 @@ $(document).ready(function () {
 
                             } else {
 
-                                $(MDR_constants.selectors.PAGE_ERROR).show();
+                                MDR_cached.$PageError.show();
 
                             }
 
@@ -195,7 +196,7 @@ $(document).ready(function () {
 
                 } else {
 
-                    $(MDR_constants.selectors.PAGE_ERROR).show();
+                    MDR_cached.$PageError.show();
 
                 }
 
@@ -466,6 +467,26 @@ $(document).ready(function () {
         _gaq.push(['_trackEvent', e.target.id, 'possible']);
         chrome.tabs.getSelected(null, function (tab) {
             chrome.tabs.create({url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D9L8GRX9H58TN&source=url', index: tab.index + 1});
+        });
+    });
+
+    $(MDR_constants.selectors.TRANSACTIONS_LINK).click(function(e) {
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            if (tabs.length) {
+                var activeTab = tabs[0];
+                var url = activeTab.url;
+                var mintUrls = [/(https\:\/\/wwws\.mint\.com\/).*/, /(https\:\/\/mint\.intuit\.com\/).*/];
+                var matchUrlArr = [];
+            
+                for (var index = 0; index < mintUrls.length; index++) {
+                    matchUrlArr = url.match(mintUrls[index]);
+                    if (matchUrlArr !== null) {
+                        url = matchUrlArr[1] + "transaction.event";
+                        chrome.tabs.update(activeTab.id, {url: url});
+                        window.close();
+                    }
+                }
+            }
         });
     });
 
