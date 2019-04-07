@@ -245,7 +245,7 @@ $(document).ready(function () {
 
                     } else {
 
-                        MDR.tabURL = MDR.tabURL.replace(/endDate\d{1,2}\/\d{1,2}\/\d{4}/, queryDateStr);
+                        MDR.tabURL = MDR.tabURL.replace(/endDate=\d{1,2}\/\d{1,2}\/\d{4}/, queryDateStr);
 
                     }
 
@@ -439,7 +439,7 @@ $(document).ready(function () {
 
         })
 
-        .bind("focus", function (event) {
+        .bind("focus", function () {
 
             MDR_cached.$InputError.hide();
 
