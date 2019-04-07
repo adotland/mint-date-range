@@ -180,9 +180,12 @@ $(document).ready(function () {
 
                                 if (transactionPageMatch) {
 
-                                    chrome.tabs.update(tab.id, {url: MDR.tabURL});
-                                    window.close();
+                                    if (MDR.identicalCheck(tab.url)) {
+                                        chrome.tabs.update(tab.id, {url: MDR.tabURL});
+                                    }
 
+                                    window.close();
+                                    
                                 } else {
 
                                     MDR_cached.$PageError.show();
@@ -207,6 +210,10 @@ $(document).ready(function () {
 
             });
 
+        },
+
+        identicalCheck: function (currentUrl) {
+            return currentUrl !== MDR.tabURL;
         },
 
         updateTabUrl: function (startNotEnd, dateStr) {
