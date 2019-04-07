@@ -1,1 +1,9 @@
 *.db
+
+gulpfile.js
+
+node_modules/
+
+release/
+
+package*.json
